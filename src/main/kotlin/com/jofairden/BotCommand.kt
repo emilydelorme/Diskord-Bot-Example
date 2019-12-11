@@ -7,5 +7,5 @@ abstract class BotCommand(
     val trigger: String
 ) : Logging {
 
-    abstract suspend fun action(listener: DiskordBot, message: Message)
+    abstract suspend fun action(listener: Klapinette, message: Message)
 }

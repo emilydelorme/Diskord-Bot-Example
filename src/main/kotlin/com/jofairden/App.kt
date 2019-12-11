@@ -11,11 +11,11 @@ import org.springframework.context.ConfigurableApplicationContext
 import java.io.File
 
 @SpringBootApplication
-open class KtApp {
+open class App {
 
     companion object {
         lateinit var appContext: ConfigurableApplicationContext
-        lateinit var bot: DiskordBot
+        lateinit var klapinette: Klapinette
 
         @JvmStatic
         fun main(args: Array<String>) = runBlocking {
@@ -24,20 +24,20 @@ open class KtApp {
                 // NOBODY MUST KNOW YOUR BOT TOKEN! KEEP IT SAFE!
                 // Recommended is to read it from a (local) file or grab
                 // it from an environment variable
-                bot = DiskordBot(getBotToken())
+                klapinette = Klapinette("NjU0MTIxMzQ0NzExMDAwMDcw.XfDhCQ.55Z16eEVTCNhX8Qw6PMztzg2FGY")
             }
             job.join()
 
-            appContext = runApplication<KtApp>(*args) {
+            appContext = runApplication<App>(*args) {
                 setBannerMode(Banner.Mode.CONSOLE)
                 webApplicationType = WebApplicationType.NONE
             }
 
-            bot.start()
+            klapinette.start()
         }
 
         private fun getBotToken(): String {
-            val classLoader = KtApp::class.java.classLoader
+            val classLoader = App::class.java.classLoader
             val file = File(classLoader.getResource("bot.token")!!.file)
 
             if (!file.canRead()) {

@@ -2,7 +2,7 @@ package com.jofairden.services
 
 import com.jessecorbett.diskord.api.model.Message
 import com.jofairden.BotCommand
-import com.jofairden.DiskordBot
+import com.jofairden.Klapinette
 import org.springframework.stereotype.Service
 
 @Service
@@ -11,10 +11,10 @@ class CommandService(
 ) {
 
     companion object {
-        private const val PREFIX = "?"
+        private const val PREFIX = "."
     }
 
-    suspend fun handleMessage(listener: DiskordBot, message: Message) {
+    suspend fun handleMessage(listener: Klapinette, message: Message) {
         if (message.content.startsWith(PREFIX)) {
             botCommands.filter {
                 message.content.startsWith("$PREFIX${it.trigger}")
