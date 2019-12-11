@@ -28,12 +28,13 @@ println("Kotlin Gradle Build :: $group :: $version :: $projectName :: $projectMa
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
+    jcenter()
 }
 
 dependencies {
     /* == MAIN == */
-    compile(kotlin("stdlib"))
-    compile(kotlin("reflect"))
+    implementation(kotlin("stdlib"))
+    implementation(kotlin("reflect"))
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
